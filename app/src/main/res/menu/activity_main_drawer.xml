@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item android:id="@+id/menu_don_hang"
+        android:title="@string/Don_Hang"
+        android:icon="@drawable/don_hang"/>
+    <item android:id="@+id/menu_so_gas"
+        android:title="@string/so_ga"
+        android:icon="@drawable/ic_so_ga"/>
+    <item android:id="@+id/menu_qua_tang"
+        android:title="@string/qua_tang"
+        android:icon="@drawable/ic_qua_tang"/>
+    <item android:id="@+id/manu_ho_tro"
+        android:title="@string/ho_tro"
+        android:icon="@drawable/ic_ho_tro"/>
+    <item android:id="@+id/menu_danh_gia"
+        android:title="@string/danh_gia"
+        android:icon="@drawable/ic_danh_gia"/>
+    <item android:id="@+id/menu_cai_dat"
+        android:title="@string/cai_dat"
+        android:icon="@drawable/ic_cai_dat"/>
+    </menu>

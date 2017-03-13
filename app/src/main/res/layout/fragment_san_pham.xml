@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/write_dark"
+    android:orientation="vertical"
+      tools:context="com.example.blue.gasbuy.Activity.DMSanPhamActivity">
+
+    <GridView
+
+        android:id="@+id/grid_SanPham"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="-10dp"
+        android:nestedScrollingEnabled="true"
+        android:numColumns="auto_fit"
+        android:scrollbars="none"
+        android:verticalSpacing="-10dp" />
+
+    <ListView
+        android:nestedScrollingEnabled="true"
+        android:id="@+id/list_dm_SanPham"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+       android:dividerHeight="-10dp" />
+
+</LinearLayout>

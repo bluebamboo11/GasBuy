@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_action"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+<RelativeLayout
+    android:id="@+id/ngay_het_gas"
+    android:layout_width="34dp"
+    android:layout_height="34dp">
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:src="@drawable/icon_gas" />
+
+    <TextView
+        android:textColor="@color/write"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textStyle="bold"
+       android:layout_centerHorizontal="true"
+        android:text="20"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:background="@drawable/khach_hang"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
+</RelativeLayout>
+    <ImageView
+        android:id="@+id/shop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="@dimen/pading_small"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/ic_store" />
+</android.support.v7.widget.Toolbar>
