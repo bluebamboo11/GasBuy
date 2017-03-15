@@ -2,17 +2,20 @@ package com.example.blue.gasbuy.Adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.blue.gasbuy.Activity.SanPhamActivity;
 import com.example.blue.gasbuy.Database.Database;
 import com.example.blue.gasbuy.Database.DatabaseManager;
 import com.example.blue.gasbuy.R;
@@ -22,89 +25,103 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 /**
- * Created by blue on 21/02/2017.
+ * Created by blue on 14/03/2017.
  */
 
-public class SanPhamAdapter extends ArrayAdapter {
+public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> {
     private Context context;
     private int idLayout;
     private List<SanPham> arrSanpham;
     private TextView textTongTien, txtCong, txtTru;
     private ImageView imgDelete;
 
-    public SanPhamAdapter(Context context, int resource, List objects, TextView tongTien) {
-        super(context, resource, objects);
+
+    public SanPhamAdapter(Context context, int idLayout, List<SanPham> arrSanpham, TextView textTongTien) {
         this.context = context;
-        this.idLayout = resource;
-        arrSanpham = objects;
-        this.textTongTien = tongTien;
+        this.idLayout = idLayout;
+        this.arrSanpham = arrSanpham;
+        this.textTongTien = textTongTien;
     }
 
-    public SanPhamAdapter(Context context, int resource, List objects) {
-        super(context, resource, objects);
-        this.context = context;
-        this.idLayout = resource;
-        arrSanpham = objects;
-
-    }
-
-    @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-                ViewHolder viewHolder = new ViewHolder();
-        if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(idLayout, null);
-            viewHolder.imgSanPham = (ImageView) view.findViewById(R.id.imgSanpham);
-            viewHolder.txtGia = (TextView) view.findViewById(R.id.textGia);
-            viewHolder.txtTen = (TextView) view.findViewById(R.id.textTen);
-            viewHolder.txtSoLuong = (TextView) view.findViewById(R.id.text_so_luong);
-            view.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) view.getTag();
-        }
-        if (viewHolder.txtSoLuong != null) {
-            viewHolder.txtSoLuong.setText(Integer.toString(arrSanpham.get(position).getSoLuong()));
-        }
-
-        viewHolder.txtTen.setText(arrSanpham.get(position).getTenSanPham());
-        int a = (int) arrSanpham.get(position).getGiaSanPham();
-        String[] arrgia = Integer.toString(a).split("");
-        String gia = arrgia[1];
-        for (int i = 2; i < arrgia.length; i++) {
-            if ((arrgia.length - i) % 3 == 0) {
-                gia = gia + ".";
-            }
-            gia = gia + arrgia[i];
-        }
-
-        Bitmap img = BitmapFactory.decodeByteArray(arrSanpham.get(position).getImgSanPham(), 0, arrSanpham.get(position).getImgSanPham().length);
-        viewHolder.txtGia.setText((gia) + " " + "VND");
-        viewHolder.imgSanPham.setImageBitmap(img);
-        txtCong = (TextView) view.findViewById(R.id.text_cong);
-        txtTru = (TextView) view.findViewById(R.id.text_Tru);
-        imgDelete = (ImageView) view.findViewById(R.id.imgDelete);
-        addEvent(position);
-
-        return view;
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View itemView = inflater.inflate(idLayout, parent, false);
+        return new ViewHolder(itemView);
     }
 
-    private class ViewHolder {
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+       // tao 1 divide duoi cung
+        if (position == arrSanpham.size()) {
+            holder.view.setVisibility(View.VISIBLE);
+            holder.cardView.setVisibility(View.GONE);
+
+        } else {
+
+            holder.txtSoLuong.setText(Integer.toString(arrSanpham.get(position).getSoLuong()));
+            holder.txtTen.setText(arrSanpham.get(position).getTenSanPham());
+            int a = (int) arrSanpham.get(position).getGiaSanPham();
+            DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+            Bitmap img = BitmapFactory.decodeByteArray(arrSanpham.get(position).getImgSanPham(), 0, arrSanpham.get(position).getImgSanPham().length);
+            holder.txtGia.setText(decimalFormat.format(a) + " " + "VND");
+            holder.imgSanPham.setImageBitmap(img);
+            addEvent(position);
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return (arrSanpham.size() + 1);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgSanPham;
         TextView txtTen;
         TextView txtGia;
         TextView txtSoLuong;
+        View view;
+        CardView cardView;
+
+        public ViewHolder(final View itemView) {
+            super(itemView);
+            imgSanPham = (ImageView) itemView.findViewById(R.id.imgSanpham);
+            txtGia = (TextView) itemView.findViewById(R.id.textGia);
+            txtTen = (TextView) itemView.findViewById(R.id.textTen);
+            txtSoLuong = (TextView) itemView.findViewById(R.id.text_so_luong);
+            txtCong = (TextView) itemView.findViewById(R.id.text_cong);
+            txtTru = (TextView) itemView.findViewById(R.id.text_Tru);
+            imgDelete = (ImageView) itemView.findViewById(R.id.imgDelete);
+            cardView = (CardView) itemView.findViewById(R.id.card);
+            view = itemView.findViewById(R.id.botdivide);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   // dieu kien de khong loi khi kich vao divide
+                    if (getAdapterPosition() < arrSanpham.size()) {
+                        Intent intent = new Intent(context, SanPhamActivity.class);
+                        intent.putExtra("logic", true);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("SanPham", arrSanpham.get(getAdapterPosition()));
+                        intent.putExtra("bundle", bundle);
+                        context.startActivity(intent);
+                    }
+                }
+            });
+        }
     }
-    // sử lý sự kiện khi click
+
     private void addEvent(final int position) {
         txtCong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() + 1);
-                DatabaseManager databaseManager = new DatabaseManager(getContext());
+                DatabaseManager databaseManager = new DatabaseManager(context);
                 databaseManager.UpdateSl(arrSanpham.get(position).getId(), arrSanpham.get(position).getSoLuong());
                 notifyDataSetChanged();
+                setTongTien();
             }
         });
 
@@ -113,9 +130,10 @@ public class SanPhamAdapter extends ArrayAdapter {
             public void onClick(View v) {
                 if (arrSanpham.get(position).getSoLuong() > 1) {
                     arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() - 1);
-                    DatabaseManager databaseManager = new DatabaseManager(getContext());
+                    DatabaseManager databaseManager = new DatabaseManager(context);
                     databaseManager.UpdateSl(arrSanpham.get(position).getId(), arrSanpham.get(position).getSoLuong());
                     notifyDataSetChanged();
+                    setTongTien();
                 }
             }
         });
@@ -126,6 +144,7 @@ public class SanPhamAdapter extends ArrayAdapter {
             }
         });
     }
+
     // tạo một dialog thông báo tới người dùng
     private void openDialog(String name, final int stt) {
         AlertDialog.Builder aBuilder = new AlertDialog.Builder(context);
@@ -141,19 +160,23 @@ public class SanPhamAdapter extends ArrayAdapter {
         aBuilder.setPositiveButton(R.string.xoa, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                DatabaseManager databaseManager = new DatabaseManager(getContext());
+                DatabaseManager databaseManager = new DatabaseManager(context);
                 databaseManager.Delete(arrSanpham.get(stt).getId());
                 arrSanpham = databaseManager.getAllData(Database.TAB_SANPHAM);
-                notifyDataSetChanged();
+                if (stt != arrSanpham.size() - 1) {
+                    notifyItemRemoved(stt);
+                } else {
+                    notifyDataSetChanged();
+                }
+                setTongTien();
 
             }
         });
         AlertDialog alertDialog = aBuilder.create();
         alertDialog.show();
     }
-    // ghi đề phương thức notifyDataSetChanged() mục đích khi gọi sẽ tự cập nhật text tổng tiền
-    @Override
-    public void notifyDataSetChanged() {
+
+    public void setTongTien() {
         float tien = 0;
         for (int i = 0; i < arrSanpham.size(); i++) {
             tien = tien + arrSanpham.get(i).getGiaSanPham() * arrSanpham.get(i).getSoLuong();
@@ -162,11 +185,6 @@ public class SanPhamAdapter extends ArrayAdapter {
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         textTongTien.setText(decimalFormat.format(tongtien) + " VND");
-        super.notifyDataSetChanged();
-    }
 
-    @Override
-    public int getCount() {
-        return arrSanpham.size();
     }
 }

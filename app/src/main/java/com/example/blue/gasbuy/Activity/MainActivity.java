@@ -1,17 +1,23 @@
 package com.example.blue.gasbuy.Activity;
 
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.blue.gasbuy.Adapter.SanPhamAdapter;
@@ -30,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar toolbar;
     private List<SanPham> arrSanpham = new ArrayList<>();
-    private ListView listView;
     private TextView txtTongTien;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +47,30 @@ public class MainActivity extends AppCompatActivity {
         createDrawer();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.title_main);
-        listView = (ListView) findViewById(R.id.listdonhang);
         txtTongTien = (TextView) findViewById(R.id.text_tongTien);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL){
+            @Override
+            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+                super.onDraw(c, parent, state);
+            }
+
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                super.getItemOffsets(outRect, view, parent, state);
+            }
+        };
+        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.divider_item);
+        dividerItemDecoration.setDrawable(drawable);
+        recyclerView.addItemDecoration(dividerItemDecoration);
         setControls();
 
-        // truyền tới SanPhamActivity một đối tượng sản phẩm và một biên boolean
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, SanPhamActivity.class);
-                intent.putExtra("logic", true);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("SanPham", arrSanpham.get(position));
-                intent.putExtra("bundle", bundle);
-                startActivity(intent);
-            }
-        });
-
-
     }
+
     // tạo Drawer cho Activity
     private void createDrawer() {
         toolbar = (Toolbar) findViewById(R.id.nav_action);
@@ -70,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
+
     // gán dữ liệu và sử lý sự kiện
     private void setControls() {
         float tien = 0;
@@ -80,8 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtTongTien.setText(decimalFormat.format(tongtien) + " VND");
-        SanPhamAdapter adapter = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
-        listView.setAdapter(adapter);
+               SanPhamAdapter adapter2 = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
+        recyclerView.setAdapter(adapter2);
+
         final Button btnKhachHang = (Button) findViewById(R.id.button_khachHang);
         btnKhachHang.setOnClickListener(new ClickActivity(KhachHangActivity.class));
         ImageView imgShop = (ImageView) findViewById(R.id.shop);
@@ -99,11 +112,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     // thêm dữ liệu cho sản phẩm
     private void setSanPham() {
         DatabaseManager data = new DatabaseManager(this);
         arrSanpham = data.getAllData(Database.TAB_SANPHAM);
     }
+
     // tạo class OnclickListener sử lý việc chuyến activity
     private class ClickActivity implements View.OnClickListener {
         Class aClass;
