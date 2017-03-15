@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.blue.gasbuy.Activity.SanPhamActivity;
-import com.example.blue.gasbuy.Database.Database;
 import com.example.blue.gasbuy.Database.DatabaseManager;
 import com.example.blue.gasbuy.R;
 import com.example.blue.gasbuy.SanPham;
@@ -52,7 +51,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-       // tao 1 divide duoi cung
+        // tao 1 divide duoi cung
         if (position == arrSanpham.size()) {
             holder.view.setVisibility(View.VISIBLE);
             holder.cardView.setVisibility(View.GONE);
@@ -66,7 +65,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             Bitmap img = BitmapFactory.decodeByteArray(arrSanpham.get(position).getImgSanPham(), 0, arrSanpham.get(position).getImgSanPham().length);
             holder.txtGia.setText(decimalFormat.format(a) + " " + "VND");
             holder.imgSanPham.setImageBitmap(img);
-            addEvent(position);
+
         }
     }
 
@@ -94,12 +93,12 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             imgDelete = (ImageView) itemView.findViewById(R.id.imgDelete);
             cardView = (CardView) itemView.findViewById(R.id.card);
             view = itemView.findViewById(R.id.botdivide);
-
+            addEvent();
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   // dieu kien de khong loi khi kich vao divide
+                    // dieu kien de khong loi khi kich vao divide
                     if (getAdapterPosition() < arrSanpham.size()) {
                         Intent intent = new Intent(context, SanPhamActivity.class);
                         intent.putExtra("logic", true);
@@ -111,39 +110,42 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                 }
             });
         }
-    }
 
-    private void addEvent(final int position) {
-        txtCong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() + 1);
-                DatabaseManager databaseManager = new DatabaseManager(context);
-                databaseManager.UpdateSl(arrSanpham.get(position).getId(), arrSanpham.get(position).getSoLuong());
-                notifyDataSetChanged();
-                setTongTien();
-            }
-        });
-
-        txtTru.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (arrSanpham.get(position).getSoLuong() > 1) {
-                    arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() - 1);
+        private void addEvent() {
+            txtCong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() + 1);
                     DatabaseManager databaseManager = new DatabaseManager(context);
                     databaseManager.UpdateSl(arrSanpham.get(position).getId(), arrSanpham.get(position).getSoLuong());
-                    notifyDataSetChanged();
+                    txtSoLuong.setText(arrSanpham.get(position).getSoLuong()+"");
                     setTongTien();
                 }
-            }
-        });
-        imgDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog(arrSanpham.get(position).getTenSanPham(), position);
-            }
-        });
+            });
+
+            txtTru.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (arrSanpham.get(position).getSoLuong() > 1) {
+                        arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() - 1);
+                        DatabaseManager databaseManager = new DatabaseManager(context);
+                        databaseManager.UpdateSl(arrSanpham.get(position).getId(), arrSanpham.get(position).getSoLuong());
+                        txtSoLuong.setText(arrSanpham.get(position).getSoLuong()+"");
+                        setTongTien();
+                    }
+                }
+            });
+            imgDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openDialog(arrSanpham.get(getAdapterPosition()).getTenSanPham(), getAdapterPosition());
+                }
+            });
+        }
     }
+
 
     // tạo một dialog thông báo tới người dùng
     private void openDialog(String name, final int stt) {
@@ -162,12 +164,8 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             public void onClick(DialogInterface dialog, int which) {
                 DatabaseManager databaseManager = new DatabaseManager(context);
                 databaseManager.Delete(arrSanpham.get(stt).getId());
-                arrSanpham = databaseManager.getAllData(Database.TAB_SANPHAM);
-                if (stt != arrSanpham.size() - 1) {
-                    notifyItemRemoved(stt);
-                } else {
-                    notifyDataSetChanged();
-                }
+                arrSanpham.remove(stt);
+                notifyItemRemoved(stt);
                 setTongTien();
 
             }
