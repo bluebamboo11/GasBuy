@@ -171,6 +171,31 @@
             android:text="@string/cai_dat"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:clickable="true"
+        android:padding="@dimen/pading_small"
+
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:paddingRight="@dimen/pading_small"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_phanhoi" />
+
+        <TextView
+            android:textSize="@dimen/text_small"
+            android:gravity="center_vertical"
+            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/phan_hoi" />
+    </LinearLayout>
+
 
 </LinearLayout>
 </LinearLayout>

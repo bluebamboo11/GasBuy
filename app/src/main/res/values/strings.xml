@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">GasBuy</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
@@ -9,6 +10,7 @@
     <string name="danh_gia">Đánh giá</string>
     <string name="cai_dat">Cài đặt</string>
     <string name="dat_mua">đặt mua</string>
+    <string name="phan_hoi">Phản hồi</string>
     <string name="xoa_san_Pham">Xóa Sản Phẩm Khỏi Giỏ Hàng</string>
     <string name="xoa_1">Bạn muốn xóa sản phẩm </string>
     <string name="xoa_2">khỏi giỏ hàng của bạn phải không</string>
@@ -29,5 +31,13 @@
     <string name="bao_hanh">Bảo Hành</string>
     <string name="mua_ngay">Mua Ngay</string>
     <string name="cua_hang">Cửa Hàng </string>
+    <string name="feedback">Mô tả vấn đề bạn muốn phản hồi</string>
+    <string name="feedback1">Giao hàng trễ</string>
+    <string name="feedback2">Thái độ phục vụ nhân viên chưa tốt</string>
+    <string name="Rate">Hãy cho chúng tôi biết đánh giá của bạn!</string>
+    <string name="feedback3">Chất lượng sản phẩm kém không đạt yêu cầu</string>
+    <string name="Setting1">Rung khi chạm</string>
+    <string name="Setting2">Thông báo khi sắp hết Gas</string>
+    <string name="Setting3">Nhận tin khuyến mại</string>
 
 </resources>
