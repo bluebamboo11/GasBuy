@@ -8,5 +8,7 @@
     <color name="write">#ffffff</color>
     <color name="write_dark">#E8E8E8</color>
     <color name="colorText">#0a0909</color>
-
+    <color name="color_Cell">#eaeef2</color>
+    <color name="color_table">#4754e1</color>
+    <color name="color_black">#FF17171A</color>
 </resources>

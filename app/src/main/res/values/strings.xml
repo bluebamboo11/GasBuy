@@ -40,4 +40,17 @@
     <string name="Setting2">Thông báo khi sắp hết Gas</string>
     <string name="Setting3">Nhận tin khuyến mại</string>
 
+    <string name="tensanpham">Tên </string>
+    <string name="giatien">Giá tiền</string>
+    <string name="trangthai">Trạng thái</string>
+    <string name="huy">Hủy</string>
+    <string name="stt">STT</string>
+    <string name="ngaythang">Ngày Sinh</string>
+    <string name="sanpham">Sản Phẩm</string>
+    <string name="khuyenmai">Khuyến mãi</string>
+    <string name="tien">Tiền</string>
+    <string name="gui">Gửi</string>
+    <string name="call">Gọi tổng đài</string>
+
+
 </resources>
