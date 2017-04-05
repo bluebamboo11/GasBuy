@@ -41,7 +41,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <LinearLayout
-
+android:id="@+id/item_don_hang"
         android:clickable="true"
         android:layout_marginTop="40dp"
         android:padding="@dimen/pading_small"
@@ -64,6 +64,7 @@
             android:text="@string/Don_Hang"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/item_so_ga"
         android:clickable="true"
         android:padding="@dimen/pading_small"
         android:background="?android:attr/selectableItemBackground"
@@ -85,6 +86,7 @@
             android:text="@string/so_ga"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/item_qua_tang"
         android:clickable="true"
         android:padding="@dimen/pading_small"
         android:background="?android:attr/selectableItemBackground"
@@ -106,6 +108,7 @@
             android:text="@string/qua_tang"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/item_ho_tro"
         android:clickable="true"
         android:padding="@dimen/pading_small"
         android:background="?android:attr/selectableItemBackground"
@@ -128,6 +131,7 @@
             android:text="@string/ho_tro"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/item_danh_gia"
         android:clickable="true"
         android:padding="@dimen/pading_small"
         android:background="?android:attr/selectableItemBackground"
@@ -149,9 +153,9 @@
             android:text="@string/danh_gia"/>
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/item_cai_dat"
         android:clickable="true"
         android:padding="@dimen/pading_small"
-
         android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -172,6 +176,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/item_phan_hoi"
         android:clickable="true"
         android:padding="@dimen/pading_small"
 

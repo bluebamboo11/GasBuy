@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.blue.gasbuy.Adapter.SanPhamAdapter;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL){
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL) {
             @Override
             public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
                 super.onDraw(c, parent, state);
@@ -92,11 +93,22 @@ public class MainActivity extends AppCompatActivity {
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtTongTien.setText(decimalFormat.format(tongtien) + " VND");
-               SanPhamAdapter adapter2 = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
+        SanPhamAdapter adapter2 = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
         recyclerView.setAdapter(adapter2);
 
         final Button btnKhachHang = (Button) findViewById(R.id.button_khachHang);
+        LinearLayout itemDonhang = (LinearLayout) findViewById(R.id.item_don_hang);
+        LinearLayout itemSoGa = (LinearLayout) findViewById(R.id.item_so_ga);
+        LinearLayout itemQuaTang = (LinearLayout) findViewById(R.id.item_qua_tang);
+        LinearLayout itemHoTro = (LinearLayout) findViewById(R.id.item_ho_tro);
+        LinearLayout itemDanhGia = (LinearLayout) findViewById(R.id.item_danh_gia);
+        LinearLayout itemCaiDat = (LinearLayout) findViewById(R.id.item_cai_dat);
+        LinearLayout itemPhanHoi = (LinearLayout) findViewById(R.id.item_phan_hoi);
         btnKhachHang.setOnClickListener(new ClickActivity(KhachHangActivity.class));
+        itemHoTro.setOnClickListener(new ClickActivity(HoTroActivity.class));
+        itemPhanHoi.setOnClickListener(new ClickActivity(PhanhoiActivity.class));
+        itemSoGa.setOnClickListener(new ClickActivity(SoGasActivity.class));
+        itemDonhang.setOnClickListener(new ClickActivity(DonHangActivity.class));
         ImageView imgShop = (ImageView) findViewById(R.id.shop);
         imgShop.setOnClickListener(new ClickActivity(DMSanPhamActivity.class));
     }

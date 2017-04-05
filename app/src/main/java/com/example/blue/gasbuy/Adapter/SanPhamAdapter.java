@@ -14,12 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.blue.gasbuy.Activity.SanPhamActivity;
 import com.example.blue.gasbuy.Database.DatabaseManager;
 import com.example.blue.gasbuy.R;
 import com.example.blue.gasbuy.SanPham;
-
 import java.text.DecimalFormat;
 import java.util.List;
 
