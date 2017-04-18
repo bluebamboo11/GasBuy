@@ -26,7 +26,16 @@
             android:theme="@style/LayoutTheme.NoActionBar" />
         <activity android:name=".Activity.SanPhamActivity"> </activity>
         <activity android:name=".Activity.HoTroActivity"/>
-        <activity android:name=".Activity.PhanhoiActivity"/>
+        <activity android:name=".Activity.PhanhoiActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
         <activity android:name=".Activity.DonHangActivity"/>
         <activity android:name=".Activity.SoGasActivity"/>
     </application>
