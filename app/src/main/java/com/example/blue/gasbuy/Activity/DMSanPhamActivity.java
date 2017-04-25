@@ -77,8 +77,6 @@ boolean b=saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
                     item.setIcon(R.drawable.ic_view_list);
                     saveLoadPreferences.seveBoolean(SaveLoadPreferences.KEY_VIEW,true);
                 }
-
-
                 mSectionsPagerAdapter.notifyDataSetChanged();
                 break;
         }
@@ -106,7 +104,6 @@ boolean b=saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
     private void setSanPham() {
         DatabaseManager data = new DatabaseManager(this);
         arrSanpham = data.getAllDataDM();
-
     }
 
 
@@ -127,7 +124,7 @@ boolean b=saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
         @Override
         public Fragment getItem(int position) {
             sanPhamfragment = new SanPhamfragment();
-          sanPhamfragment.setArrSanpham(arrSanpham);
+
             return sanPhamfragment;
         }
 

@@ -24,8 +24,11 @@ import android.widget.TextView;
 import com.example.blue.gasbuy.Adapter.SanPhamAdapter;
 import com.example.blue.gasbuy.Database.Database;
 import com.example.blue.gasbuy.Database.DatabaseManager;
+import com.example.blue.gasbuy.DonHangFirebase;
 import com.example.blue.gasbuy.R;
 import com.example.blue.gasbuy.SanPham;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar toolbar;
     private List<SanPham> arrSanpham = new ArrayList<>();
+
     private TextView txtTongTien;
     private RecyclerView recyclerView;
 
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         dividerItemDecoration.setDrawable(drawable);
         recyclerView.addItemDecoration(dividerItemDecoration);
         setControls();
-
+        sendDonHang();
     }
 
     // tạo Drawer cho Activity
@@ -145,4 +149,36 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    private void sendDonHang() {
+        Button btnDatMua = (Button) findViewById(R.id.button_dat_mua);
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        StringBuilder sanPhamId = new StringBuilder();
+        for (int i = 0; i < arrSanpham.size(); i++) {
+            sanPhamId.append(arrSanpham.get(i).getId());
+            sanPhamId.append(":").append(arrSanpham.get(i).getSoLuong());
+            if (i < arrSanpham.size()-1) {
+                sanPhamId.append(",");
+            }
+        }
+        StringBuilder sanphams = new StringBuilder();
+        for (int i = 0; i < arrSanpham.size(); i++) {
+            sanphams.append("- ");
+            sanphams.append(arrSanpham.get(i).getTenSanPham());
+            sanphams.append("(").append(arrSanpham.get(i).getSoLuong()).append(")");
+            if (i < arrSanpham.size()-1) {
+                sanphams.append(" \n");
+            }
+        }
+        final DonHangFirebase donHangFirebase = new DonHangFirebase("Tung", 200000, sanphams.toString(), "ha noi", "01682537685", sanPhamId.toString(), 21.028933, 105.852107);
+        btnDatMua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference.child("HaNoi/HaDong/LaKhe").push().setValue(donHangFirebase);
+            }
+        });
+
+
+    }
+
 }

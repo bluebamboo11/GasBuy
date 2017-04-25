@@ -35,18 +35,18 @@ public class DatabaseManager {
         return sanPhamList;
     }
     // Xóa một đối tượng trong bảng theo ID
-    public void Delete(int id) {
-        datasource.delete(Database.TAB_SANPHAM, "ID = ?", new String[]{id + ""});
+    public void Delete(String id) {
+        datasource.delete(Database.TAB_SANPHAM, "ID = ?", new String[]{id });
     }
     // Sửa một đối tượng trong bảng theo ID
-    public void UpdateSl(int id, int so_luong) {
+    public void UpdateSl(String id, int so_luong) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("so_luong", so_luong);
-        datasource.update(Database.TAB_SANPHAM, contentValues, "ID = ?", new String[]{id + ""});
+        datasource.update(Database.TAB_SANPHAM, contentValues, "ID = ?", new String[]{id });
     }
     // Lấy dữ liệu  một đối tượng trong bảng theo ID
     public SanPham getData(Cursor cursor) {
-        int id = cursor.getInt(0);
+        String id = cursor.getString(0);
 
         String ten = cursor.getString(1);
         float gia = cursor.getFloat(2);
@@ -64,7 +64,7 @@ public class DatabaseManager {
         Cursor cursor = datasource.rawQuery("SELECT * FROM " + Database.TAB_DMSANPHAM + "", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            int id = cursor.getInt(6);
+            String id = cursor.getString(0);
             String ten = cursor.getString(0);
             float gia = cursor.getFloat(1);
             byte[] anh = cursor.getBlob(2);
@@ -79,7 +79,7 @@ public class DatabaseManager {
     }
 
     // lay du lieu mot san pham tu CSDL
-    public SanPham getDataIteam(int id) {
+    public SanPham getDataIteam(String id) {
         Cursor cursor = datasource.rawQuery("SELECT * FROM " + Database.TAB_DMSANPHAM + " WHERE ID = ? ", new String[]{id + ""});
         cursor.moveToFirst();
         String ten = cursor.getString(0);
@@ -97,13 +97,14 @@ public class DatabaseManager {
         lsanpham = getAllData(Database.TAB_SANPHAM);
         boolean logic=true;
         for (int i = 0; i < lsanpham.size(); i++) {
-            if (sanPham.getTenSanPham().equals(lsanpham.get(i).getTenSanPham())) {
+            if (sanPham.getId().equals(lsanpham.get(i).getId())) {
                 logic=false;
                 UpdateSl(lsanpham.get(i).getId(), lsanpham.get(i).getSoLuong() + 1);
             }
         }
         if(logic) {
             ContentValues contentValues = new ContentValues();
+            contentValues.put("ID",sanPham.getId());
             contentValues.put("ten", sanPham.getTenSanPham());
             contentValues.put("gia", sanPham.getGiaSanPham());
             contentValues.put("so_luong", 1);

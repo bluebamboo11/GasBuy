@@ -73,9 +73,7 @@ public class SanPhamActivity extends AppCompatActivity {
 // nếu true thì lấy đối tượng sản phẩm được gủi từ  mainActivity
         if (!logic) {
             btnSanPham.setVisibility(View.VISIBLE);
-            id = intent.getIntExtra("key", -1);
-            DatabaseManager data = new DatabaseManager(this);
-            sanPham = data.getDataIteam(id);
+          sanPham= (SanPham) getIntent().getSerializableExtra("sanpham");
 
         } else {
             btnSanPham.setVisibility(View.GONE);

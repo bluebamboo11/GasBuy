@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 
 public class SanPham implements Serializable {
-    private int id;
+    private String id;
     private byte []imgSanPham;
     private String tenSanPham;
     private float giaSanPham;
@@ -16,7 +16,7 @@ public class SanPham implements Serializable {
     private String thong_so;
     private String bao_hanh;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -30,7 +30,7 @@ public class SanPham implements Serializable {
         this.bao_hanh = bao_hanh;
     }
 
-    public SanPham(int id, byte[] imgSanPham, String tenSanPham, float giaSanPham, int soLuong, String thong_tin, String thong_so, String bao_hanh) {
+    public SanPham(String id, byte[] imgSanPham, String tenSanPham, float giaSanPham, int soLuong, String thong_tin, String thong_so, String bao_hanh) {
         this.id = id;
         this.imgSanPham = imgSanPham;
         this.tenSanPham = tenSanPham;
@@ -41,7 +41,7 @@ public class SanPham implements Serializable {
         this.bao_hanh = bao_hanh;
     }
 
-    public SanPham(int id, byte[] imgSanPham, String tenSanPham, float giaSanPham, String thong_tin, String thong_so, String bao_hanh) {
+    public SanPham(String id, byte[] imgSanPham, String tenSanPham, float giaSanPham, String thong_tin, String thong_so, String bao_hanh) {
         this.id = id;
         this.imgSanPham = imgSanPham;
         this.tenSanPham = tenSanPham;

@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.blue.gasbuy.Activity.SanPhamActivity;
 import com.example.blue.gasbuy.Database.DatabaseManager;
 import com.example.blue.gasbuy.R;
 import com.example.blue.gasbuy.SanPham;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -100,9 +101,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                     if (getAdapterPosition() < arrSanpham.size()) {
                         Intent intent = new Intent(context, SanPhamActivity.class);
                         intent.putExtra("logic", true);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("SanPham", arrSanpham.get(getAdapterPosition()));
-                        intent.putExtra("bundle", bundle);
+                        intent.putExtra("SanPham", arrSanpham.get(getAdapterPosition()));
                         context.startActivity(intent);
                     }
                 }
@@ -117,7 +116,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                     arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() + 1);
                     DatabaseManager databaseManager = new DatabaseManager(context);
                     databaseManager.UpdateSl(arrSanpham.get(position).getId(), arrSanpham.get(position).getSoLuong());
-                    txtSoLuong.setText(arrSanpham.get(position).getSoLuong()+"");
+                    txtSoLuong.setText(arrSanpham.get(position).getSoLuong() + "");
                     setTongTien();
                 }
             });
@@ -130,7 +129,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
                         arrSanpham.get(position).setSoLuong(arrSanpham.get(position).getSoLuong() - 1);
                         DatabaseManager databaseManager = new DatabaseManager(context);
                         databaseManager.UpdateSl(arrSanpham.get(position).getId(), arrSanpham.get(position).getSoLuong());
-                        txtSoLuong.setText(arrSanpham.get(position).getSoLuong()+"");
+                        txtSoLuong.setText(arrSanpham.get(position).getSoLuong() + "");
                         setTongTien();
                     }
                 }
