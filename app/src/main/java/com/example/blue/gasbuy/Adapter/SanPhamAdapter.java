@@ -32,7 +32,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     private List<SanPham> arrSanpham;
     private TextView textTongTien, txtCong, txtTru;
     private ImageView imgDelete;
-
+private  int tongtien;
 
     public SanPhamAdapter(Context context, int idLayout, List<SanPham> arrSanpham, TextView textTongTien) {
         this.context = context;
@@ -171,15 +171,24 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         alertDialog.show();
     }
 
-    public void setTongTien() {
+    private void setTongTien() {
         float tien = 0;
         for (int i = 0; i < arrSanpham.size(); i++) {
             tien = tien + arrSanpham.get(i).getGiaSanPham() * arrSanpham.get(i).getSoLuong();
         }
-        int tongtien = (int) tien;
+         tongtien = (int) tien;
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         textTongTien.setText(decimalFormat.format(tongtien) + " VND");
 
+    }
+
+    public int getTongtien() {
+        float tien = 0;
+        for (int i = 0; i < arrSanpham.size(); i++) {
+            tien = tien + arrSanpham.get(i).getGiaSanPham() * arrSanpham.get(i).getSoLuong();
+        }
+        tongtien = (int) tien;
+        return tongtien;
     }
 }

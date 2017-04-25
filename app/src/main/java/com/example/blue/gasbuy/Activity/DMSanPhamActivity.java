@@ -68,14 +68,14 @@ public class DMSanPhamActivity extends AppCompatActivity {
                 onBackPressed();
                 break;
             case R.id.app_bar_view:
-                SaveLoadPreferences saveLoadPreferences=new SaveLoadPreferences(this);
-boolean b=saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
+                SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
+                boolean b = saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
                 if (b) {
                     item.setIcon(R.drawable.ic_view_module);
-                   saveLoadPreferences.seveBoolean(SaveLoadPreferences.KEY_VIEW,false);
+                    saveLoadPreferences.seveBoolean(SaveLoadPreferences.KEY_VIEW, false);
                 } else {
                     item.setIcon(R.drawable.ic_view_list);
-                    saveLoadPreferences.seveBoolean(SaveLoadPreferences.KEY_VIEW,true);
+                    saveLoadPreferences.seveBoolean(SaveLoadPreferences.KEY_VIEW, true);
                 }
                 mSectionsPagerAdapter.notifyDataSetChanged();
                 break;
@@ -87,13 +87,12 @@ boolean b=saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
-        SaveLoadPreferences saveLoadPreferences=new SaveLoadPreferences(this);
-        boolean b=saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
-        MenuItem item=menu.findItem(R.id.app_bar_view);
-        if(!b){
+        SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
+        boolean b = saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
+        MenuItem item = menu.findItem(R.id.app_bar_view);
+        if (!b) {
             item.setIcon(R.drawable.ic_view_module);
-        }
-        else {
+        } else {
             item.setIcon(R.drawable.ic_view_list);
         }
 
@@ -137,7 +136,7 @@ boolean b=saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
 
         @Override
         public void notifyDataSetChanged() {
-            Log.e("setdata","thanh cong");
+            Log.e("setdata", "thanh cong");
             super.notifyDataSetChanged();
         }
 

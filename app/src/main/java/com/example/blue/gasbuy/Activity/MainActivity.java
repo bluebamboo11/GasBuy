@@ -27,6 +27,7 @@ import com.example.blue.gasbuy.Database.DatabaseManager;
 import com.example.blue.gasbuy.DonHangFirebase;
 import com.example.blue.gasbuy.R;
 import com.example.blue.gasbuy.SanPham;
+import com.example.blue.gasbuy.SaveLoadPreferences;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar toolbar;
     private List<SanPham> arrSanpham = new ArrayList<>();
-
+    private SanPhamAdapter adapter2;
     private TextView txtTongTien;
     private RecyclerView recyclerView;
 
@@ -48,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SaveLoadPreferences saveLoadPreferences=new SaveLoadPreferences(this);
+        if(saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "").equals("")){
+           Intent intent=new Intent(this, KhachHangActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
         setSanPham();
         createDrawer();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -73,7 +80,15 @@ public class MainActivity extends AppCompatActivity {
         dividerItemDecoration.setDrawable(drawable);
         recyclerView.addItemDecoration(dividerItemDecoration);
         setControls();
-        sendDonHang();
+
+        Button btnDatMua = (Button) findViewById(R.id.button_dat_mua);
+        btnDatMua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setSanPham();
+                sendDonHang();
+            }
+        });
     }
 
     // tạo Drawer cho Activity
@@ -97,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtTongTien.setText(decimalFormat.format(tongtien) + " VND");
-        SanPhamAdapter adapter2 = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
+         adapter2 = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
         recyclerView.setAdapter(adapter2);
 
         final Button btnKhachHang = (Button) findViewById(R.id.button_khachHang);
@@ -151,13 +166,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendDonHang() {
-        Button btnDatMua = (Button) findViewById(R.id.button_dat_mua);
+
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         StringBuilder sanPhamId = new StringBuilder();
         for (int i = 0; i < arrSanpham.size(); i++) {
             sanPhamId.append(arrSanpham.get(i).getId());
             sanPhamId.append(":").append(arrSanpham.get(i).getSoLuong());
-            if (i < arrSanpham.size()-1) {
+            if (i < arrSanpham.size() - 1) {
                 sanPhamId.append(",");
             }
         }
@@ -166,17 +181,19 @@ public class MainActivity extends AppCompatActivity {
             sanphams.append("- ");
             sanphams.append(arrSanpham.get(i).getTenSanPham());
             sanphams.append("(").append(arrSanpham.get(i).getSoLuong()).append(")");
-            if (i < arrSanpham.size()-1) {
+            if (i < arrSanpham.size() - 1) {
                 sanphams.append(" \n");
             }
         }
-        final DonHangFirebase donHangFirebase = new DonHangFirebase("Tung", 200000, sanphams.toString(), "ha noi", "01682537685", sanPhamId.toString(), 21.028933, 105.852107);
-        btnDatMua.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                databaseReference.child("HaNoi/HaDong/LaKhe").push().setValue(donHangFirebase);
-            }
-        });
+        SaveLoadPreferences saveLoadPreferences=new SaveLoadPreferences(this);
+
+        final DonHangFirebase donHangFirebase = new DonHangFirebase(saveLoadPreferences.loadString(SaveLoadPreferences.Ten,"")
+                ,adapter2.getTongtien() , sanphams.toString()
+                , saveLoadPreferences.loadString(SaveLoadPreferences.DIA_CHi,""),
+                saveLoadPreferences.loadString(SaveLoadPreferences.SDT,""), sanPhamId.toString(),
+                Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.X,"")),
+                Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.Y,"")));
+        databaseReference.child("HaNoi/HaDong/LaKhe").push().setValue(donHangFirebase);
 
 
     }

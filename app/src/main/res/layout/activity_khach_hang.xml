@@ -24,12 +24,13 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/text_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/khach_hang"
             android:gravity="center"
-            android:text="T"
+
             android:textColor="@color/colorAccent"
             android:textSize="60dp" />
     </FrameLayout>
@@ -50,57 +51,65 @@
         android:padding="20dp">
 
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/ten" />
 
         <EditText
-            android:textSize="@dimen/text_tb"
+            android:id="@+id/text_ten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tong Thanh Tung" />
+            android:hint="Tong Thanh Tung"
+            android:textSize="@dimen/text_tb" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/Dia_chi" />
 
         <EditText
-            android:textSize="@dimen/text_tb"
+            android:id="@+id/text_diachi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ha dong Ha noi" />
+            android:hint="Ha dong Ha noi"
+            android:textSize="@dimen/text_tb" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="@string/So_dien_thoai" />
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-       <EditText
-           android:textSize="@dimen/text_tb"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="+84"/>
-        <EditText
-            android:textSize="@dimen/text_tb"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             android:hint="01692537685" />
-</LinearLayout>
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+84"
+                android:textSize="@dimen/text_tb" />
+
+            <EditText
+            android:id="@+id/text_sdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="01692537685"
+                android:textSize="@dimen/text_tb" />
+        </LinearLayout>
+
         <Button
-            android:clickable="true"
-            android:textSize="@dimen/text_tb"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/colorPrimaryDark"
+            android:id="@+id/buton_dangky"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/Dang_ky" />
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:clickable="true"
+            android:text="@string/Dang_ky"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_tb" />
     </LinearLayout>
 </LinearLayout>
