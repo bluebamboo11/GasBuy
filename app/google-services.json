@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "745544666187",
+    "firebase_url": "https://gasbuy-4a04d.firebaseio.com",
+    "project_id": "gasbuy-4a04d",
+    "storage_bucket": "gasbuy-4a04d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745544666187:android:e849225ecf32433c",
+        "android_client_info": {
+          "package_name": "com.example.blue.gasshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745544666187-0ge7t72i3jo2n4g2iem0vaqfise93096.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.blue.gasshop",
+            "certificate_hash": "31c214b749a581bb9076cf9951878bee44886626"
+          }
+        },
+        {
+          "client_id": "745544666187-nqmoq3pnllv8uqobeekn40q33hhd36qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBACqvA9GZCJGreNjmokl0outZtnt0PghQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745544666187-nqmoq3pnllv8uqobeekn40q33hhd36qm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745544666187:android:28b7fcb19ae7b30b",
+        "android_client_info": {
+          "package_name": "com.example.blue.gasbuy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745544666187-1a462ne8nf7ulv5ticvjv9035p4e6bdr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.blue.gasbuy",
+            "certificate_hash": "31c214b749a581bb9076cf9951878bee44886626"
+          }
+        },
+        {
+          "client_id": "745544666187-nqmoq3pnllv8uqobeekn40q33hhd36qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBACqvA9GZCJGreNjmokl0outZtnt0PghQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745544666187-nqmoq3pnllv8uqobeekn40q33hhd36qm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
