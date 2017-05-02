@@ -36,7 +36,11 @@ public class PhanhoiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (ckCL.isChecked() != false || ckGH.isChecked() != false || ckTD.isChecked() != false) {
                     if (txtFeedBack.getText().toString() != null) {
-//                        Toast.makeText(PhanhoiActivity.this,"Bạn đã gửi thành công:"+txtFeedBack.getText()+""+ckGH.isChecked()+""+ckCL.isChecked()+""+ckTD.isChecked() ,Toast.LENGTH_LONG).show();
+                        Toast.makeText(PhanhoiActivity.this,"Bạn đã gửi thành công",Toast.LENGTH_LONG).show();
+                        ckTD.setChecked(false);
+                        ckGH.setChecked(false);
+                        ckTD.setChecked(false);
+                        txtFeedBack.setText(null);
                         // thêm vào csdl tại đây
                     } else {
                         Toast.makeText(PhanhoiActivity.this, " Điền nội dung muốn phản hồi", Toast.LENGTH_LONG).show();
