@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,9 +42,15 @@ public class SanPhamfragment extends Fragment {
     private DatabaseReference databaseReference;
     private FirebaseStorage storage;
     private DSSanPhamAdapter sanPhamAdapter;
+    private String tab;
+    private  ChildEventListener childEventListenerData;
     public SanPhamfragment() {
+
     }
 
+    public void setTab(String tab) {
+        this.tab = tab;
+    }
 
     @Nullable
     @Override
@@ -89,10 +96,11 @@ public class SanPhamfragment extends Fragment {
 
     private void loadData() {
 
-        ChildEventListener childEventListenerData = new ChildEventListener() {
+         childEventListenerData = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 final SanPhamFirebase sanPhamFirebase = dataSnapshot.getValue(SanPhamFirebase.class);
+              Log.e("url",sanPhamFirebase.anh);
                 StorageReference storageRef = storage.getReferenceFromUrl(sanPhamFirebase.anh);
                 storageRef.getBytes(1024 * 1024).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                     @Override
@@ -126,7 +134,18 @@ public class SanPhamfragment extends Fragment {
             }
         };
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("SanPham").child("bepgas").addChildEventListener(childEventListenerData);
+
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        databaseReference.child("SanPham").child(tab).addChildEventListener(childEventListenerData);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        databaseReference.child("SanPham").child(tab).removeEventListener(childEventListenerData);
+    }
 }

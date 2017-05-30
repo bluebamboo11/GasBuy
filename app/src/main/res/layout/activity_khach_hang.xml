@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
+
     tools:context="com.example.blue.gasbuy.Activity.KhachHangActivity">
 
     <FrameLayout
@@ -24,6 +25,7 @@
         </LinearLayout>
 
         <TextView
+            android:textAllCaps="true"
             android:id="@+id/text_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,19 +38,21 @@
     </FrameLayout>
 
     <TextView
+        android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Thanh Tung"
         android:textSize="20dp"
         android:textStyle="bold" />
 
     <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+       >
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,8 +64,67 @@
             android:id="@+id/text_ten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tong Thanh Tung"
+
             android:textSize="@dimen/text_tb" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:text="Tỉnh/Thành phố" />
+
+            <Spinner
+                android:entries="@array/tinh"
+               android:id="@+id/spinner_tinh"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:text="Quận/huyện" />
+
+            <Spinner
+                android:entries="@array/quan"
+                android:id="@+id/spinner_quan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:text="Phường, xã" />
+
+            <Spinner
+               android:id="@+id/spinner_phuong"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,7 +136,7 @@
             android:id="@+id/text_diachi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ha dong Ha noi"
+
             android:textSize="@dimen/text_tb" />
 
         <TextView
@@ -94,10 +157,10 @@
                 android:textSize="@dimen/text_tb" />
 
             <EditText
-            android:id="@+id/text_sdt"
+                android:id="@+id/text_sdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="01692537685"
+android:inputType="number"
                 android:textSize="@dimen/text_tb" />
         </LinearLayout>
 

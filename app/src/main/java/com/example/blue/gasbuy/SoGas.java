@@ -9,12 +9,12 @@ public class SoGas {
     private String ngaySinh;
     private String sanpham;
     private String khuyenmai;
-    private Double tien;
+    private int tien;
 
     public SoGas() {
     }
 
-    public SoGas(int stt, String ngaySinh, String sanpham, String khuyenmai, Double tien) {
+    public SoGas(int stt, String ngaySinh, String sanpham, String khuyenmai, int tien) {
         this.stt = stt;
         this.ngaySinh = ngaySinh;
         this.sanpham = sanpham;
@@ -54,11 +54,11 @@ public class SoGas {
         this.khuyenmai = khuyenmai;
     }
 
-    public Double getTien() {
+    public int getTien() {
         return tien;
     }
 
-    public void setTien(Double tien) {
+    public void setTien(int tien) {
         this.tien = tien;
     }
 }

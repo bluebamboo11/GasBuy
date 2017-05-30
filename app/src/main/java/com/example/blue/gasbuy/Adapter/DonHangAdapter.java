@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -45,7 +44,7 @@ public class DonHangAdapter extends BaseAdapter{
         TextView ten;
         TextView giatien;
         TextView trangthai;
-        ImageView img;
+
         LinearLayout relativeLayout;
     }
     @Override
@@ -59,7 +58,7 @@ public class DonHangAdapter extends BaseAdapter{
             viewHolder.ten=(TextView)itemView.findViewById(R.id.ten);
             viewHolder.trangthai=(TextView)itemView.findViewById(R.id.trangthai);
             viewHolder.giatien=(TextView)itemView.findViewById(R.id.giatien);
-            viewHolder.img = (ImageView)itemView.findViewById(R.id.imghuy);
+
             viewHolder.relativeLayout = (LinearLayout) itemView.findViewById(R.id.relativeLayout1);
             itemView.setTag(viewHolder);
         }
@@ -67,24 +66,12 @@ public class DonHangAdapter extends BaseAdapter{
         {
             viewHolder = (ViewHolder) itemView.getTag();
         }
-        if (position %2 ==0){
-            viewHolder.relativeLayout.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimary));
-        } else {
-            viewHolder.relativeLayout.setBackgroundColor(activity.getResources().getColor(R.color.color_table));
-        }
-        DonHang model = donHangList.get(position);
-        viewHolder.ten.setText(model.getTen().toString());
-        viewHolder.trangthai.setText(model.getTrangThai().toString());
-        viewHolder.giatien.setText(model.getGiaTien()+"");
-        if(model.isHuy())
-        {
-            viewHolder.img.setImageResource(R.drawable.ic_check_circle);
 
-        }
-        else
-        {
-            viewHolder.img.setVisibility(View.VISIBLE);
-        }
+        DonHang model = donHangList.get(position);
+        viewHolder.ten.setText(model.getTen());
+        viewHolder.trangthai.setText(model.getSoLuong()+"");
+        viewHolder.giatien.setText(model.getGiaTien()+"");
+
         return itemView;
     }
 }

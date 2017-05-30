@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_donhang"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/activity_donhang"
     tools:context="com.example.blue.gasbuy.Activity.DonHangActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <LinearLayout
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:background="@color/color_table"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="00:00:00"
-                android:gravity="center"
-                android:textSize="24dp"
-                android:id="@+id/txttimer"
-                android:textColor="@color/color_Cell"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/color_Cell"
-                android:layout_marginTop="10dp"/>
-        </LinearLayout>
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Đơn hàng đã đặt thành công"
+            android:textColor="@color/write"
+            android:textSize="20dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_Cell" />
+
+
+
         <LinearLayout
-            android:id = "@+id/relativeLayout1"
-            android:layout_width = "fill_parent"
-            android:layout_height = "wrap_content"
-            android:paddingTop="3dp"
-            android:background = "@color/color_table"
+            android:id="@+id/relativeLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_table"
             >
+
             <TextView
-                android:layout_width = "0dp"
-                android:layout_height = "wrap_content"
-                android:layout_weight = "1"
-                android:gravity = "center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
+                android:layout_weight="3"
                 android:background="@drawable/cell_shape"
-                android:padding = "5dp"
-                android:text = "@string/tensanpham"
-                android:textColor = "@color/color_Cell" />
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/tensanpham"
+                android:textColor="@color/color_Cell" />
 
             <TextView
                 android:id="@+id/textView"
@@ -59,53 +59,56 @@
                 android:textColor="@color/color_Cell" />
 
             <TextView
-                android:layout_width = "0dp"
-                android:layout_height = "wrap_content"
-                android:layout_weight = "1.5"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
                 android:background="@drawable/cell_shape"
-                android:gravity = "center"
-                android:padding = "5dp"
-                android:text = "@string/trangthai"
-                android:textColor = "@color/color_Cell" />
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Số Lượng"
+                android:textColor="@color/color_Cell" />
+
             <ImageView
-                android:layout_width = "0dp"
-                android:layout_height = "wrap_content"
-                android:layout_weight = "1"
-                android:gravity = "center"
-                android:textColor = "@color/color_Cell"
+                android:id="@+id/btnhuy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/cell_shape"
-                android:src="@drawable/ic_highlight_delete"
+                android:gravity="center"
                 android:paddingBottom="5dp"
-                android:id="@+id/btnhuy"/>
+                android:src="@drawable/ic_highlight_delete"
+                android:textColor="@color/color_Cell"
+                android:visibility="gone" />
         </LinearLayout>
+
         <ListView
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_round"
-            android:divider="@color/color_Cell"
-            android:dividerHeight="2dp" />
+            android:divider="#8c8a8a"
+            android:dividerHeight="-2dp" />
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
-        <Button
-            android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/pading_small">
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Đặt Hàng"
-            android:id="@+id/btnDat"
-            android:background="@drawable/bg_button"
-            android:textColor="@color/color_Cell"
-            android:layout_marginTop="5dp"/>
-        <Button
+            android:text="@string/tong_tien" />
+
+        <TextView
+            android:id="@+id/text_tongTien"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hủy Hàng"
-            android:id="@+id/btnHuy"
-            android:background="@drawable/bg_button"
-            android:textColor="@color/color_Cell"
-            android:layout_marginTop="5dp"/>
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:text="5.000.000 VND" />
     </LinearLayout>
 </RelativeLayout>

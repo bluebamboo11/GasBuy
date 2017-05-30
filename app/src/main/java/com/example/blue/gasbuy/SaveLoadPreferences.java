@@ -16,6 +16,10 @@ public class SaveLoadPreferences {
     public static final  String Ten="ten";
     public static final  String DIA_CHi="diachi";
     public static final  String SDT="sdt";
+    public static final  String DIA_CHI_F="diachif";
+    public static final  String DON_HANG="donhang";
+    public static final  String TONG_TIEN="tongtien";
+
 
     public SaveLoadPreferences(Context context) {
         this.context = context;

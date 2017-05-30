@@ -2,205 +2,234 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/white">
-<LinearLayout
-    android:padding="@dimen/pading_small"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-
-    android:background="@color/colorPrimary"
-    android:layout_width="match_parent"
-    android:layout_height="155dp" >
-    <TextView
-        android:gravity="center"
-        android:text="T"
-        android:textSize="60dp"
-        android:textColor="@color/colorAccent"
-           android:background="@drawable/khach_hang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-    <TextView
-        android:layout_marginTop="2dp"
-        android:text="Thanh Tung"
-        android:textColor="@android:color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/button_khachHang"
-        android:clickable="true"
-         android:textSize="7dp"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="@string/thay_doi"/>
-</LinearLayout>
-<LinearLayout
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical">
-    <LinearLayout
-android:id="@+id/item_don_hang"
-        android:clickable="true"
-        android:layout_marginTop="40dp"
-        android:padding="@dimen/pading_small"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:paddingRight="@dimen/pading_small"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/don_hang"/>
-        <TextView
-            android:textSize="@dimen/text_small"
-            android:gravity="center_vertical"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/Don_Hang"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/item_so_ga"
-        android:clickable="true"
-        android:padding="@dimen/pading_small"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:paddingRight="@dimen/pading_small"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_so_ga"/>
-        <TextView
-            android:textSize="@dimen/text_small"
-            android:gravity="center_vertical"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/so_ga"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/item_qua_tang"
-        android:clickable="true"
-        android:padding="@dimen/pading_small"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:paddingRight="@dimen/pading_small"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_qua_tang"/>
-        <TextView
-            android:textSize="@dimen/text_small"
-            android:gravity="center_vertical"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/qua_tang"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/item_ho_tro"
-        android:clickable="true"
-        android:padding="@dimen/pading_small"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
 
-            android:paddingRight="@dimen/pading_small"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_ho_tro"/>
-        <TextView
-            android:textSize="@dimen/text_small"
-            android:gravity="center_vertical"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/ho_tro"/>
-    </LinearLayout>
     <LinearLayout
-        android:id="@+id/item_danh_gia"
-        android:clickable="true"
-        android:padding="@dimen/pading_small"
-        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:paddingRight="@dimen/pading_small"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_danh_gia"/>
+        android:layout_height="155dp"
+        android:background="@color/colorPrimary"
+
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/pading_small">
+
         <TextView
-            android:textSize="@dimen/text_small"
-            android:gravity="center_vertical"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/danh_gia"/>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/item_cai_dat"
-        android:clickable="true"
-        android:padding="@dimen/pading_small"
-        android:background="?android:attr/selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:paddingRight="@dimen/pading_small"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:id="@+id/text_name_ava"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_cai_dat"/>
+            android:background="@drawable/khach_hang"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textSize="60dp" />
+
         <TextView
-            android:textSize="@dimen/text_small"
-            android:gravity="center_vertical"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/cai_dat"/>
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Thanh Tung"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/button_khachHang"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:clickable="true"
+            android:text="@string/thay_doi"
+            android:textSize="7dp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/item_phan_hoi"
-        android:clickable="true"
-        android:padding="@dimen/pading_small"
 
-        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:paddingRight="@dimen/pading_small"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/item_don_hang"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_phanhoi" />
+            android:layout_marginTop="40dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/pading_small"
+            >
 
-        <TextView
-            android:textSize="@dimen/text_small"
-            android:gravity="center_vertical"
-            android:layout_weight="6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="@string/phan_hoi" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/pading_small"
+                android:src="@drawable/don_hang" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/Don_Hang"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_so_ga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/pading_small">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/pading_small"
+                android:src="@drawable/ic_so_ga" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/so_ga"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_qua_tang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/pading_small"
+           >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/pading_small"
+                android:src="@drawable/ic_qua_tang" />
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/qua_tang"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_ho_tro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/pading_small">
+
+            <ImageView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/pading_small"
+                android:src="@drawable/ic_ho_tro" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/ho_tro"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/item_danh_gia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/pading_small">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/pading_small"
+                android:src="@drawable/ic_danh_gia" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/danh_gia"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/item_cai_dat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/pading_small">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/pading_small"
+                android:src="@drawable/ic_cai_dat" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/cai_dat"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_phan_hoi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/pading_small">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="@dimen/pading_small"
+                android:src="@drawable/ic_phanhoi" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:gravity="center_vertical"
+                android:text="@string/phan_hoi"
+                android:textSize="@dimen/text_small" />
+        </LinearLayout>
+
+
     </LinearLayout>
-
-
-</LinearLayout>
 </LinearLayout>

@@ -61,9 +61,9 @@ public class SoGasAdpater extends BaseAdapter {
         }
         SoGas soGaModel = lstSoGa.get(position);
         viewHolder.stt.setText(soGaModel.getStt()+"");
-        viewHolder.khuyenmai.setText(soGaModel.getKhuyenmai());
+
         viewHolder.ngaysinh.setText(soGaModel.getNgaySinh());
-        viewHolder.sanpham.setText(soGaModel.getSanpham());
+
         viewHolder.tien.setText(soGaModel.getTien()+"");
         return row;
     }

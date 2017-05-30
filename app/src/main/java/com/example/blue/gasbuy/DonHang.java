@@ -9,12 +9,24 @@ public class DonHang {
     private double giaTien;
     private String trangThai;
     private boolean huy;
+private int soLuong;
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
 
     public DonHang(String ten, double giaTien, String trangThai, boolean huy) {
         this.ten = ten;
         this.giaTien = giaTien;
         this.trangThai = trangThai;
         this.huy = huy;
+    }
+
+    public DonHang() {
     }
 
     public String getTen() {

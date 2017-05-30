@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/color_Cell"/>
     <LinearLayout
+
         android:id = "@+id/relativeLayout1"
         android:layout_width = "match_parent"
         android:layout_height = "match_parent"
@@ -29,12 +36,9 @@
             android:gravity="center"
             android:text="@string/ngaythang" />
 
-        <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@color/color_Cell"/>
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/sanpham"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -65,4 +69,8 @@
             android:gravity="center"
             android:text="@string/tien" />
     </LinearLayout>
+    <View
+                android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/color_Cell"/>
 </LinearLayout>

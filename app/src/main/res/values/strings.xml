@@ -45,12 +45,107 @@
     <string name="trangthai">Trạng thái</string>
     <string name="huy">Hủy</string>
     <string name="stt">STT</string>
-    <string name="ngaythang">Ngày Sinh</string>
+    <string name="ngaythang">Ngày</string>
     <string name="sanpham">Sản Phẩm</string>
     <string name="khuyenmai">Khuyến mãi</string>
     <string name="tien">Tiền</string>
     <string name="gui">Gửi</string>
     <string name="call">Gọi tổng đài</string>
+    <string-array name="tinh">
+        <item>Hà Nội</item>
+    </string-array>
+    <string-array name="quan">
+        <item>Ba Đình</item>
+        <item>Bắc Từ Liêm</item>
+        <item>Cầu Giấy</item>
+        <item>Đống Đa</item>
+        <item>Hà Đông</item>
+        <item>Hai Bà Trưng</item>
+        <item>Hoàn Kiếm</item>
+        <item>Hoàng Mai</item>
 
+    </string-array>
+<string-array name="badinh">
+    <item>Cống Vị</item>
+    <item>Điện Biên</item>
+    <item>Đội Cấn</item>
+    <item>Giảng Võ</item>
+    <item>Kim Mã</item>
+    <item>Liễu Giai</item>
+    <item>Ngọc Hà</item>
+    <item>Ngọc Khánh</item>
+    <item>Nguyễn Trung Trực</item>
+    <item>Phúc Xá</item>
+    <item>Quán Thánh</item>
 
+</string-array>
+    <string-array name="bac_tu_liem">
+        <item> Cổ Nhuế 1</item>
+        <item>Đông Ngạc</item>
+        <item> Đức Thắng</item>
+        <item>Liên Mạc</item>
+        <item>Minh Khai</item>
+        <item>Phú Diễn</item>
+        <item>Phúc Diễn</item>
+        <item> Tây Tựu</item>
+    </string-array>
+    <string-array name="cau_giay">
+        <item> Dịch Vọng</item>
+        <item> Dịch Vọng Hậu</item>
+        <item> Mai Dịch</item>
+        <item> Nghĩa Đô</item>
+        <item> Nghĩa Tân</item>
+        <item> Quan Hoa</item>
+        <item> Trung Hòa</item>
+        <item> Yên Hòa</item>
+    </string-array>
+    <string-array name="dong_da">
+        <item>Cát Linh</item>
+        <item>Hàng Bột</item>
+        <item> Khâm Thiên</item>
+        <item> Khương Thượng</item>
+        <item>Kim Liên</item>
+        <item> Láng Hạ</item>
+        <item>Láng Thượng</item>
+        <item> Nam Đồng</item>
+    </string-array>
+    <string-array name="ha_dong">
+        <item>Biên Giang</item>
+        <item> Đồng Mai</item>
+        <item> Dương Nội</item>
+        <item>Hà Cầu</item>
+        <item>La Khê</item>
+        <item> Mộ Lao</item>
+        <item> Nguyễn Trãi</item>
+        <item> Phú La</item>
+        <item>Yết Kiêu</item>
+    </string-array>
+    <string-array name="hai_ba_trung">
+        <item></item>
+        <item> Bạch Đằng</item>
+        <item>Bách Khoa</item>
+        <item>Bạch Mai</item>
+        <item> Bùi Thị Xuân</item>
+        <item>Cầu Dền</item>
+        <item>Cầu Dền</item>
+        <item>Cầu Dền</item>
+    </string-array>
+    <string-array name="hoan_kiem">
+        <item>Chương Dương Độ</item>
+        <item> Cửa Đông</item>
+        <item> Cửa Nam</item>
+        <item>Đồng Xuân</item>
+        <item> Hàng Bạc</item>
+        <item>Hàng Bài</item>
+        <item> Hàng Bồ</item>
+        <item>Hàng Bông</item>
+    </string-array>
+    <string-array name="hoang_mai">
+        <item>Đại Kim</item>
+        <item>Định Công</item>
+        <item> Giáp Bát</item>
+        <item>Hoàng Liệt</item>
+        <item>Hoàng Văn Thụ</item>
+        <item>Lĩnh Nam</item>
+    </string-array>
 </resources>

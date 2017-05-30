@@ -39,8 +39,8 @@
             <TextView
                 android:id="@+id/textTen"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1.5"
+                android:layout_height="wrap_content"
+
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="Binh ga so 1"
@@ -49,9 +49,9 @@
             <TextView
                 android:id="@+id/textGia"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_weight="1"
+
                 android:paddingLeft="20dp"
                 android:text="250.000 VND"
                 android:textColor="@android:color/holo_red_dark" />

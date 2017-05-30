@@ -16,6 +16,8 @@ public class Database {
     public  static final   String DATA_NAME="GasBuyDB.sqlite";
     public  static final   String TAB_SANPHAM="SanPham";
     public  static final   String TAB_DMSANPHAM="DmSanPham";
+    public  static final   String TAB_SOGAS="Sogas";
+    public  static final   String TAB_DONHANG="DonHang";
     // tạo một SQLiteDatabase lấy dữ liệu từ file assets
     public static SQLiteDatabase initDatabase(Context context, String databaseName){
         try {

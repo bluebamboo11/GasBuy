@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SaveLoadPreferences saveLoadPreferences=new SaveLoadPreferences(this);
-        if(saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "").equals("")){
-           Intent intent=new Intent(this, KhachHangActivity.class);
+        SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
+        if (saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "").equals("")) {
+            Intent intent = new Intent(this, KhachHangActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
@@ -59,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         createDrawer();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.title_main);
+        String ten = saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "");
+        TextView textTen=(TextView) findViewById(R.id.text_name);
+        TextView textava=(TextView) findViewById(R.id.text_name_ava);
+        textTen.setText(ten);
+        if(!ten.equals("")){
+            String []a=ten.split("");
+            textava.setText(a[1]);
+        }
         txtTongTien = (TextView) findViewById(R.id.text_tongTien);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -112,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         txtTongTien.setText(decimalFormat.format(tongtien) + " VND");
-         adapter2 = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
+        adapter2 = new SanPhamAdapter(this, R.layout.list_sanpham, arrSanpham, txtTongTien);
         recyclerView.setAdapter(adapter2);
 
         final Button btnKhachHang = (Button) findViewById(R.id.button_khachHang);
@@ -185,17 +193,28 @@ public class MainActivity extends AppCompatActivity {
                 sanphams.append(" \n");
             }
         }
-        SaveLoadPreferences saveLoadPreferences=new SaveLoadPreferences(this);
+        SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
 
-        final DonHangFirebase donHangFirebase = new DonHangFirebase(saveLoadPreferences.loadString(SaveLoadPreferences.Ten,"")
-                ,adapter2.getTongtien() , sanphams.toString()
-                , saveLoadPreferences.loadString(SaveLoadPreferences.DIA_CHi,""),
-                saveLoadPreferences.loadString(SaveLoadPreferences.SDT,""), sanPhamId.toString(),
-                Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.X,"")),
-                Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.Y,"")));
-        databaseReference.child("HaNoi/HaDong/LaKhe").push().setValue(donHangFirebase);
+        final DonHangFirebase donHangFirebase = new DonHangFirebase(saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "")
+                , adapter2.getTongtien(), sanphams.toString()
+                , saveLoadPreferences.loadString(SaveLoadPreferences.DIA_CHi, ""),
+                saveLoadPreferences.loadString(SaveLoadPreferences.SDT, ""), sanPhamId.toString(),
+                Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.X, "")),
+                Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.Y, "")));
+        String diachi = saveLoadPreferences.loadString(SaveLoadPreferences.DIA_CHI_F, "");
+        databaseReference.child(diachi).push().setValue(donHangFirebase);
+        DatabaseManager databaseManager = new DatabaseManager(this);
+        long id = databaseManager.insertSoGas(donHangFirebase);
 
-
+        for (SanPham sanPham : arrSanpham) {
+            databaseManager.insertDonHang(sanPham, id);
+        }
+         saveLoadPreferences.saveInteger(SaveLoadPreferences.DON_HANG,(int)id);
+        saveLoadPreferences.saveInteger(SaveLoadPreferences.TONG_TIEN,donHangFirebase.tongtien);
+Intent intent=new Intent(this, DonHangActivity.class);
+        intent.putExtra("id",id);
+        intent.putExtra("tien",donHangFirebase.tongtien);
+        startActivity(intent);
     }
 
 }

@@ -13,10 +13,14 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +36,13 @@ public class KhachHangActivity extends AppCompatActivity {
     private EditText editTextDiaChi;
     private EditText editTextSDT;
     private TextView textViewAvatar;
+    private Spinner spinnerTinh;
+    private Spinner spinnerQuan;
+    private Spinner spinnerPhuong;
+
+
     private SaveLoadPreferences saveLoadPreferences;
+    ArrayAdapter<CharSequence> arrayAdapter;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -42,7 +52,7 @@ public class KhachHangActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setElevation(0f);
 
-      saveLoadPreferences = new SaveLoadPreferences(this);
+        saveLoadPreferences = new SaveLoadPreferences(this);
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         buttonDk = (Button) findViewById(R.id.buton_dangky);
 
@@ -78,6 +88,10 @@ public class KhachHangActivity extends AppCompatActivity {
         editTextDiaChi = (EditText) findViewById(R.id.text_diachi);
         editTextSDT = (EditText) findViewById(R.id.text_sdt);
         textViewAvatar = (TextView) findViewById(R.id.text_avatar);
+        spinnerTinh=(Spinner) findViewById(R.id.spinner_tinh);
+        spinnerQuan=(Spinner) findViewById(R.id.spinner_quan);
+        spinnerPhuong=(Spinner) findViewById(R.id.spinner_phuong);
+
         loadData();
         configure_button();
     }
@@ -125,6 +139,9 @@ public class KhachHangActivity extends AppCompatActivity {
                 String ten = editTextTen.getText().toString();
                 String sdt = editTextSDT.getText().toString();
                 String diachi = editTextDiaChi.getText().toString();
+                String tinh=spinnerTinh.getSelectedItem().toString();
+                String quan=spinnerQuan.getSelectedItem().toString();
+                String phuong=spinnerPhuong.getSelectedItem().toString();
                 if (ten.equals("") || sdt.equals("") || diachi.equals("")) {
                     Toast.makeText(KhachHangActivity.this, "Moi nhap day du thong tin", Toast.LENGTH_LONG).show();
                 } else {
@@ -132,7 +149,13 @@ public class KhachHangActivity extends AppCompatActivity {
                     saveLoadPreferences.saveString(SaveLoadPreferences.DIA_CHi, diachi);
                     saveLoadPreferences.saveString(SaveLoadPreferences.SDT, sdt);
                     saveLoadPreferences.saveString(SaveLoadPreferences.Ten, ten);
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, listener);
+                    saveLoadPreferences.saveString(SaveLoadPreferences.DIA_CHI_F,tinh+"/"+quan+"/"+phuong);
+
+                    if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, listener);
+                    }else {
+                        Log.e("null","chua cap quyen");
+                    }
                 }
 
             }
@@ -143,8 +166,60 @@ public class KhachHangActivity extends AppCompatActivity {
         String ten = saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "");
         String sdt = saveLoadPreferences.loadString(SaveLoadPreferences.DIA_CHi, "");
         String diachi = saveLoadPreferences.loadString(SaveLoadPreferences.SDT, "");
-        editTextDiaChi.setHint(diachi);
-        editTextSDT.setHint(sdt);
-        editTextTen.setHint(ten);
+        editTextDiaChi.setText(diachi);
+        editTextSDT.setText(sdt);
+        editTextTen.setText(ten);
+
+        TextView textName=(TextView) findViewById(R.id.text_name);
+spinnerQuan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (position){
+            case 0:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.badinh,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+            case 1:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.bac_tu_liem,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+            case 2:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.cau_giay,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+            case 3:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.dong_da,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+            case 4:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.ha_dong,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+            case 5:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.hai_ba_trung,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+            case 6:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.hoan_kiem,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+            case 7:arrayAdapter=ArrayAdapter.createFromResource(KhachHangActivity.this, R.array.hoang_mai,android.R.layout.simple_spinner_item);
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerPhuong.setAdapter(arrayAdapter);
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+});
+        textName.setText(ten);
+        if(!ten.equals("")){
+            String []a=ten.split("");
+            textViewAvatar.setText(a[1]);
+        }
+
     }
 }

@@ -122,7 +122,17 @@ public class DMSanPhamActivity extends AppCompatActivity {
          */
         @Override
         public Fragment getItem(int position) {
-            sanPhamfragment = new SanPhamfragment();
+           switch (position){
+               case 0:sanPhamfragment = new SanPhamfragment();
+                   sanPhamfragment.setTab("bepgas");
+                   break;
+               case 1:sanPhamfragment = new SanPhamfragment();
+                   sanPhamfragment.setTab("binhgas");
+                   break;
+               case 2:sanPhamfragment = new SanPhamfragment();
+                   sanPhamfragment.setTab("linhkien");
+                   break;
+           }
 
             return sanPhamfragment;
         }
