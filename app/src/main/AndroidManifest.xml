@@ -12,6 +12,7 @@
         android:supportsRtl="true">
         <activity
 
+            android:screenOrientation="portrait"
             android:name=".Activity.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -20,21 +21,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.KhachHangActivity" />
+        <activity android:name=".Activity.KhachHangActivity"
+            android:screenOrientation="portrait"/>
         <activity
 
+            android:screenOrientation="portrait"
             android:name=".Activity.DMSanPhamActivity"
             android:label="@string/title_activity_san_pham"
             android:theme="@style/LayoutTheme.NoActionBar" />
-        <activity android:name=".Activity.SanPhamActivity"> </activity>
-        <activity android:name=".Activity.HoTroActivity"/>
-        <activity android:name=".Activity.PhanhoiActivity">
+        <activity android:name=".Activity.SanPhamActivity"
+            android:screenOrientation="portrait"> </activity>
+        <activity android:name=".Activity.HoTroActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.PhanhoiActivity"
+            android:screenOrientation="portrait">
 
 
         </activity>
 
-        <activity android:name=".Activity.DonHangActivity"/>
-        <activity android:name=".Activity.SoGasActivity"/>
+        <activity android:name=".Activity.DonHangActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.SoGasActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
