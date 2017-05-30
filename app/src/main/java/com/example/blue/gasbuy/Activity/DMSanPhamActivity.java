@@ -9,14 +9,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.blue.gasbuy.Database.DatabaseManager;
 import com.example.blue.gasbuy.Fragment.SanPhamfragment;
 import com.example.blue.gasbuy.R;
 import com.example.blue.gasbuy.SanPham;
-import com.example.blue.gasbuy.SaveLoadPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,37 +65,13 @@ public class DMSanPhamActivity extends AppCompatActivity {
 
                 onBackPressed();
                 break;
-            case R.id.app_bar_view:
-                SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
-                boolean b = saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
-                if (b) {
-                    item.setIcon(R.drawable.ic_view_module);
-                    saveLoadPreferences.seveBoolean(SaveLoadPreferences.KEY_VIEW, false);
-                } else {
-                    item.setIcon(R.drawable.ic_view_list);
-                    saveLoadPreferences.seveBoolean(SaveLoadPreferences.KEY_VIEW, true);
-                }
-                mSectionsPagerAdapter.notifyDataSetChanged();
-                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
 
     // gán nút search lên ActionBar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.search, menu);
-        SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
-        boolean b = saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
-        MenuItem item = menu.findItem(R.id.app_bar_view);
-        if (!b) {
-            item.setIcon(R.drawable.ic_view_module);
-        } else {
-            item.setIcon(R.drawable.ic_view_list);
-        }
 
-        return true;
-    }
 
     // thêm dữ liệu cho sản phẩm
     private void setSanPham() {
