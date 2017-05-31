@@ -98,10 +98,10 @@ private  int tongtien;
                 @Override
                 public void onClick(View v) {
                     // dieu kien de khong loi khi kich vao divide
-                    if (getAdapterPosition() < arrSanpham.size()) {
+                    if (getAdapterPosition() < arrSanpham.size()-1) {
                         Intent intent = new Intent(context, SanPhamActivity.class);
                         intent.putExtra("logic", true);
-                        intent.putExtra("SanPham", arrSanpham.get(getAdapterPosition()));
+                        intent.putExtra("sanpham", arrSanpham.get(getAdapterPosition()));
                         context.startActivity(intent);
                     }
                 }

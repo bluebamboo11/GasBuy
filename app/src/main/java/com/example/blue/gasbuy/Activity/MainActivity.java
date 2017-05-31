@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
         if (saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "").equals("")) {
             Intent intent = new Intent(this, KhachHangActivity.class);
@@ -60,11 +61,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.title_main);
         String ten = saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "");
-        TextView textTen=(TextView) findViewById(R.id.text_name);
-        TextView textava=(TextView) findViewById(R.id.text_name_ava);
+        TextView textTen = (TextView) findViewById(R.id.text_name);
+        TextView textava = (TextView) findViewById(R.id.text_name_ava);
         textTen.setText(ten);
-        if(!ten.equals("")){
-            String []a=ten.split("");
+        if (!ten.equals("")) {
+            String[] a = ten.split("");
             textava.setText(a[1]);
         }
         txtTongTien = (TextView) findViewById(R.id.text_tongTien);
@@ -202,18 +203,18 @@ public class MainActivity extends AppCompatActivity {
                 Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.X, "")),
                 Double.parseDouble(saveLoadPreferences.loadString(SaveLoadPreferences.Y, "")));
         String diachi = saveLoadPreferences.loadString(SaveLoadPreferences.DIA_CHI_F, "");
-        databaseReference.child(diachi).push().setValue(donHangFirebase);
+        databaseReference.child("HaNoi/HaDong/LaKhe").push().setValue(donHangFirebase);
         DatabaseManager databaseManager = new DatabaseManager(this);
         long id = databaseManager.insertSoGas(donHangFirebase);
 
         for (SanPham sanPham : arrSanpham) {
             databaseManager.insertDonHang(sanPham, id);
         }
-         saveLoadPreferences.saveInteger(SaveLoadPreferences.DON_HANG,(int)id);
-        saveLoadPreferences.saveInteger(SaveLoadPreferences.TONG_TIEN,donHangFirebase.tongtien);
-Intent intent=new Intent(this, DonHangActivity.class);
-        intent.putExtra("id",id);
-        intent.putExtra("tien",donHangFirebase.tongtien);
+        saveLoadPreferences.saveInteger(SaveLoadPreferences.DON_HANG, (int) id);
+        saveLoadPreferences.saveInteger(SaveLoadPreferences.TONG_TIEN, donHangFirebase.tongtien);
+        Intent intent = new Intent(this, DonHangActivity.class);
+        intent.putExtra("id", id);
+        intent.putExtra("tien", donHangFirebase.tongtien);
         startActivity(intent);
     }
 

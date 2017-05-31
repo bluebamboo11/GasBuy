@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.blue.gasbuy.R;
 import com.example.blue.gasbuy.SoGas;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -63,8 +64,8 @@ public class SoGasAdpater extends BaseAdapter {
         viewHolder.stt.setText(soGaModel.getStt()+"");
 
         viewHolder.ngaysinh.setText(soGaModel.getNgaySinh());
-
-        viewHolder.tien.setText(soGaModel.getTien()+"");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        viewHolder.tien.setText(decimalFormat.format(soGaModel.getTien()));
         return row;
     }
     public class ViewHolder

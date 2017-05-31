@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.blue.gasbuy.DonHang;
 import com.example.blue.gasbuy.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -70,7 +71,8 @@ public class DonHangAdapter extends BaseAdapter{
         DonHang model = donHangList.get(position);
         viewHolder.ten.setText(model.getTen());
         viewHolder.trangthai.setText(model.getSoLuong()+"");
-        viewHolder.giatien.setText(model.getGiaTien()+"");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        viewHolder.giatien.setText(decimalFormat.format(model.getGiaTien()));
 
         return itemView;
     }

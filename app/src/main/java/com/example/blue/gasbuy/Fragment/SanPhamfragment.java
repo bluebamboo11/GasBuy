@@ -55,6 +55,7 @@ public class SanPhamfragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         storage = FirebaseStorage.getInstance();
         sanPhams = new ArrayList<>();
         View rootView = inflater.inflate(R.layout.fragment_san_pham, container, false);
@@ -62,21 +63,21 @@ public class SanPhamfragment extends Fragment {
         gridView = (GridView) rootView.findViewById(R.id.grid_SanPham);
         SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(getContext());
         boolean b = saveLoadPreferences.loadBoolean(SaveLoadPreferences.KEY_VIEW);
-        if (b) {
-            listView.setVisibility(View.GONE);
-            sanPhamAdapter = new DSSanPhamAdapter(getContext(), R.layout.list_ds_san_pham, sanPhams);
-            gridView.setAdapter(sanPhamAdapter);
-            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getContext(), SanPhamActivity.class);
-                    intent.putExtra("sanpham", sanPhams.get(position));
-                    intent.putExtra("logic", false);
-                    startActivity(intent);
-
-                }
-            });
-        } else {
+//        if (b) {
+//            listView.setVisibility(View.GONE);
+//            sanPhamAdapter = new DSSanPhamAdapter(getContext(), R.layout.list_ds_san_pham, sanPhams);
+//            gridView.setAdapter(sanPhamAdapter);
+//            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                    Intent intent = new Intent(getContext(), SanPhamActivity.class);
+//                    intent.putExtra("sanpham", sanPhams.get(position));
+//                    intent.putExtra("logic", false);
+//                    startActivity(intent);
+//
+//                }
+//            });
+//        } else {
             gridView.setVisibility(View.GONE);
             sanPhamAdapter = new DSSanPhamAdapter(getContext(), R.layout.list_ds_san_pham, sanPhams);
             listView.setAdapter(sanPhamAdapter);
@@ -89,7 +90,7 @@ public class SanPhamfragment extends Fragment {
                     startActivity(intent);
                 }
             });
-        }
+//        }
         loadData();
         return rootView;
     }
@@ -140,7 +141,9 @@ public class SanPhamfragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         databaseReference.child("SanPham").child(tab).addChildEventListener(childEventListenerData);
+        databaseReference.child("SanPham").child(tab).keepSynced(true);
     }
 
     @Override

@@ -77,8 +77,7 @@ public class SanPhamActivity extends AppCompatActivity {
 
         } else {
             btnSanPham.setVisibility(View.GONE);
-            Bundle bundle = intent.getBundleExtra("bundle");
-            sanPham = (SanPham) bundle.getSerializable("SanPham");
+            sanPham= (SanPham) getIntent().getSerializableExtra("sanpham");
 
         }
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");

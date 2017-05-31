@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp">
+   >
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -16,6 +15,8 @@
         android:orientation="horizontal"
         >
         <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:id="@+id/stt"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -24,11 +25,15 @@
             android:gravity="center"
             android:text="@string/stt" />
         <View
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="@color/color_Cell"/>
 
         <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:id="@+id/ngaythang"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -38,6 +43,8 @@
 
 
         <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:visibility="gone"
             android:id="@+id/sanpham"
             android:layout_width="0dp"
@@ -47,10 +54,14 @@
             android:text="@string/sanpham" />
 
         <View
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="@color/color_Cell"/>
         <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:id="@+id/khuyenmai"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -58,10 +69,14 @@
             android:gravity="center"
             android:text="@string/khuyenmai" />
         <View
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="@color/color_Cell"/>
         <TextView
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:id="@+id/tien"
             android:layout_width="0dp"
             android:layout_height="match_parent"

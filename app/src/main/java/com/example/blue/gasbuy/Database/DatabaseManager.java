@@ -131,7 +131,7 @@ public class DatabaseManager {
 
     public Long insertSoGas(DonHangFirebase donHangFirebase) {
         Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         ContentValues contentValues = new ContentValues();
         contentValues.put("date", dateFormat.format(c));
         contentValues.put("tien", donHangFirebase.tongtien);
