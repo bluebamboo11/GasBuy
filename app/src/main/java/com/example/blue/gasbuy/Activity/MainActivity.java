@@ -51,9 +51,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SaveLoadPreferences saveLoadPreferences = new SaveLoadPreferences(this);
-        if (saveLoadPreferences.loadString(SaveLoadPreferences.Ten, "").equals("")) {
+        if (saveLoadPreferences.loadString(SaveLoadPreferences.X, "").equals("")) {
             Intent intent = new Intent(this, KhachHangActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            finish();
             startActivity(intent);
         }
         setSanPham();

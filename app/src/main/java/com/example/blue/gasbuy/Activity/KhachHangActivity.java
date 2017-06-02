@@ -145,6 +145,9 @@ public class KhachHangActivity extends AppCompatActivity {
                 if (ten.equals("") || sdt.equals("") || diachi.equals("")) {
                     Toast.makeText(KhachHangActivity.this, "Moi nhap day du thong tin", Toast.LENGTH_LONG).show();
                 } else {
+                    progressDialog.setMessage("Loading ...");
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
                     saveLoadPreferences.saveString(SaveLoadPreferences.DIA_CHi, diachi);
                     saveLoadPreferences.saveString(SaveLoadPreferences.SDT, sdt);
@@ -154,8 +157,12 @@ public class KhachHangActivity extends AppCompatActivity {
                     if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
                         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, listener);
                     }else {
-                        Log.e("null","chua cap quyen");
-                    }
+                        Log.e("null","chua cap quyen");}
+                    if(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, listener);
+                    }else{
+                        Log.e("null","chua cap quyen");}
+
                 }
 
             }
